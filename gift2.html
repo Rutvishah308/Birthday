@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>A Letter From My Heart 💌</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&family=Sacramento&family=Italianno&display=swap"
+		rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+	<style>
+		body {
+			background: #ffe3e7;
+			font-family: 'Roboto', sans-serif;
+			color: #3c2f2f;
+			padding: 3rem;
+			line-height: 1.8;
+			max-width: 800px;
+			margin: auto;
+			font-size: 1.05rem;
+			position: relative;
+		}
+
+		.letter-container {
+			background-color: rgb(255, 255, 255);
+			padding: 3rem;
+			border-radius: 10px;
+			border: 1px solid brown;
+			box-shadow: 0 0 20px rgba(204, 121, 121, 0.8);
+			position: relative;
+		}
+
+		h1 {
+			font-family: cursive;
+			font-size: 2rem;
+			text-align: center;
+			margin-bottom: 2rem;
+			color: #7b4a2d;
+		}
+
+		.signature {
+			font-family: cursive;
+			text-align: right;
+			margin-top: 3rem;
+			font-size: 1.2rem;
+			color: #5a3b28;
+		}
+
+		.ps {
+			font-style: italic;
+			margin-top: 2rem;
+			color: #555;
+		}
+
+		.download-btn {
+			text-align: center;
+			margin-top: 3rem;
+		}
+
+		/* Seal images */
+
+		.seal {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 150px;
+			border-radius: 50%;
+			opacity: 1;
+		}
+
+		@media (max-width: 800px) {
+			.seal {
+				width: 80px;
+				bottom: 0px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="letter-container">
+		<h1>A Letter From My Heart 💌</h1>
+
+		<p>To The One Who Walked Into My Quiet World,<br>
+			And Made It Louder — In The Best Way Possible,</p>
+
+		<p>You Remember That Silent, Introverted Girl I Used To Be?<br>
+			The One Who Avoided Eye Contact, Kept Words Locked Inside, And Never Knew How To Take Up Space?<br>
+			Well… She’s Still Here — But She Talks Now. A Lot.<br>
+			Even To Strangers. And That’s Because Of You.</p>
+
+		<p>You Didn’t Just Become My Friend.<br>
+			You Became My Loudest Cheerleader, Softest Listener, And The Warmest Corner Of My Chaos.<br>
+			You Believed In Me Before I Knew How To Believe In Myself.<br>
+			You Gave Me The Kind Of Confidence That Doesn’t Come From Compliments —<br>
+			But From Being Seen, Accepted, And Backed Every Step Of The Way.</p>
+
+		<p>I Call You My Favorite Sirdard — Because Honestly,<br>
+			Only You Have The Guts To Interrupt Me Mid-Sentence Just To Watch Me Glare.<br>
+			And Then? One Look. One Innocent Face. And Everything’s Fixed.<br>
+			Fooshhh — All My Anger Disappears.</p>
+
+		<p>You Fight For Me.<br>
+			You Care For Me — Even When I Push You Away.<br>
+			Even When I Throw Tantrums, Act Dramatic, Or Pretend I Don’t Care…<br>
+			You Stay. With Patience, With Kindness, With Love That Doesn’t Ask Me To Change.</p>
+
+		<p>You’ve Seen My Mood Swings, My Zidd, My Childish Chaos In This Bhari Jawani —<br>
+			And Yet, Here You Are… Not Once Making Me Feel Like I’m Too Much.<br>
+			Instead, You Make Me Feel Like I’m Just Enough.<br>
+			Exactly The Way I Am.</p>
+
+		<p>So This Letter?<br>
+			It’s Not A Thank You.<br>
+			It’s A Forever.</p>
+
+		<p>For The Version Of Me You’ve Helped Bloom,<br>
+			For The Parts Of Me You Healed Without Even Knowing,<br>
+			And For Every Moment That Made Us Us...</p>
+
+		<p>You’re Not Just A Friend.<br>
+			You’re My Home In A Human.</p>
+
+		<div class="signature">With All My Love,<br>Your Not-So-Silent Bestie 💙</div>
+
+		<div class="ps">
+			P.S. I Was — And I Still Am — A Hopeless Fan Of Your Smile…<br>
+			And Your Cutie Little Eyes That Speak Louder Than Words Ever Could. ☁️👀✨
+		</div>
+		<!-- Wax Seal -->
+		<img src="assets/cartoon.jpg" alt="Wax Seal" class="seal" />
+	</div>
+
+	<script>
+		// Heart confetti from both sides
+		setInterval(() => {
+			confetti({
+				particleCount: 5,
+				angle: 60,
+				spread: 55,
+				origin: { x: 0, y: 0.2 },
+				emojis: ['💙', '💖']
+			});
+
+			confetti({
+				particleCount: 5,
+				angle: 120,
+				spread: 55,
+				origin: { x: 1, y: 0.2 },
+				emojis: ['💙', '💖']
+			});
+		}, 600);
+	</script>
+</body>
+
+</html>

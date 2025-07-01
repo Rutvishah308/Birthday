@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📜 Forever Bestie Contract</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #b76e79;
+            --bg-light: #fef6f9;
+            --accent: #fff0f5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background: var(--bg-light);
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .contract-box {
+            max-width: 700px;
+            background: white;
+            border: 2px dashed var(--main-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--main-color);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        ul.rules {
+            text-align: left;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        ul.rules li {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        button {
+            font-family: inherit;
+            background: var(--main-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #984c58;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 14px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .popup-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .popup-content button {
+            background: #444;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p, ul.rules li {
+                font-size: 1rem;
+            }
+
+            button {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contract-box">
+        <h1>📜 Forever Bestie Contract</h1>
+        <p>
+            By accepting this contract,<br> you agree to be my one and only forever bestie💖<br>
+            That means unlimited memes, sudden calls, dramatic rants,<br> and emotional breakdowns — with love 🥺💥
+        </p>
+        <p>Here are the 33 unbreakable rules of our eternal chaos and care:</p>
+        <ul class="rules">
+            <li>1. You can never replace me. Not even in your dreams.</li>
+            <li>2. Mood swings? You signed up for this emotional rollercoaster.</li>
+            <li>3. If I cry, you cry. If I slap someone, you help hide the body.</li>
+            <li>4. You must always hype me up, even if I look like a walking disaster.</li>
+            <li>5. Midnight cravings are your responsibility too 🍟🌮</li>
+            <li>6. I will always call dibs on being your emergency contact ⚠️</li>
+            <li>7. We fight, we cry, we yell... but we never un-bestie each other.</li>
+            <li>8. You must attend all my fake dramatic award speeches 🎭</li>
+            <li>9. When I text "I'm fine", you're legally bound to show up with snacks.</li>
+            <li>10. You have to listen to all my gossip — even if it’s about the same person. Again.</li>
+            <li>11. No boring replies. Only ✨chaotic energy✨ allowed in our chats.</li>
+            <li>12. You must send me ugly selfies. Or it’s a betrayal.</li>
+            <li>13. I own rights to your wardrobe. Period. 💼</li>
+            <li>14. I can drag you on your birthday — with love.</li>
+            <li>15. You're not allowed to look cuter than me. Unless I say so.</li>
+            <li>16. You must remember every inside joke we've ever made. Always.</li>
+            <li>17. When I’m drunk texting… you're decoding it.</li>
+            <li>18. We must watch at least one cringe show together and love it. No questions.</li>
+            <li>19. You're not just my bestie — you're also my backup therapist 🚫🧠</li>
+            <li>20. You’re not allowed to like someone without my deep investigation 🕵️‍♀️</li>
+            <li>21. I get 24/7 ranting rights. No limits.</li>
+            <li>22. You must always be on my side. Even if I’m wrong. Especially if I’m wrong.</li>
+            <li>23. I can hug you without warning. No escape.</li>
+            <li>24. You’ll hold my hand when I’m scared and punch someone if needed 🧨</li>
+            <li>25. We romanticize each other’s achievements like dramatic Bollywood stars.</li>
+            <li>26. I’m the default +1 to every party. No debates.</li>
+            <li>27. If one of us is being hot, the other must capture it. Photographer duties.</li>
+            <li>28. You must cry during my emotional speeches. It’s a requirement 😭</li>
+            <li>29. We go from “I hate people” to “Let’s adopt a dog” together 🐶</li>
+            <li>30. You’ll never be alone on your bad days. I’ll bring the blanket and the chaos.</li>
+            <li>31. We flirt with life, not each other — unless it’s to get free dessert 🍰</li>
+            <li>32. Your silence means "I'm planning a surprise." Don’t ruin it.</li>
+            <li>33. You're stuck with me. Forever. No takebacks. Contractually sealed 💌</li>
+        </ul>
+
+        <p>🙏 Bestie Pledge:<br>
+        I pledge to never let this friendship dull.<br>
+        I promise to be your loudest cheerleader, your softest shoulder, and your favorite chaos.<br>
+        Through memes, meltdowns, milestones, and midnights — I'm yours forever✨🐶</p>
+
+        <p>So... Do you accept your fate?</p>
+        <div class="btn-group">
+            <button onclick="acceptContract()">Accept ✅</button>
+            <button onclick="declineContract()">Decline ❌</button>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content" id="popupContent">
+            <!-- Dynamic content will go here -->
+        </div>
+    </div>
+
+    <script>
+        const popup = document.getElementById('popup');
+        const popupContent = document.getElementById('popupContent');
+
+        function acceptContract() {
+            popupContent.innerHTML = `
+                <p>💌 Your Forever Bestie Contract is now sealed!<br><br>
+                ⚠️ Warning: You're now legally bound to tolerate 1000+ mood swings, tantrums, drama, and chaos 🫸👑💅</p>
+                <button onclick="closePopup()">Okayyy Bestie 🤝</button>
+            `;
+            popup.style.display = 'flex';
+        }
+
+        function declineContract() {
+            popupContent.innerHTML = `
+                <p>🙅‍♀️ That’s not happening, you HAVE to accept the contract 😤<br><br>
+                There's no exit clause in Bestie Rules 📖</p>
+                <button onclick="redirectBack()">📜 Read Contract Again</button>
+            `;
+            popup.style.display = 'flex';
+        }
+
+        function closePopup() {
+            popup.style.display = 'none';
+        }
+
+        function redirectBack() {
+            window.location.href = 'gift6.html';
+        }
+    </script>
+</body>
+
+</html>

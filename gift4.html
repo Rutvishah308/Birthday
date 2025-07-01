@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emergency Survival Kit💊</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: linear-gradient(to right, #f3daf3, #ffffff 50%, #f3daf3);
+      --main-color: #b76e79;
+      --border: 1px solid #2c2727;
+      --light-bg: #eeeeee;
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Patrick Hand', cursive;
+      background: var(--background);
+      color: #333;
+      text-transform: capitalize;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--main-color);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .mood-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 1.2rem;
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      flex: 1 1 45%;
+      transition: transform 0.3s ease;
+    }
+
+    .mood-box:hover {
+      transform: scale(1.01);
+    }
+
+    .mood-title {
+      font-size: 1.4rem;
+      color: #0b1957;
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #984c58;
+    }
+
+    .message {
+      font-size: 1.05rem;
+      color: #444;
+      background-color: #fef3f5;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      display: none;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .note {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+      color: #555;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .mood-box {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Emergency Survival Kit💊💙</h1>
+  <div class="note">
+    This little kit stays by your side… until I can reach you and hold you for real 💖🧸
+  </div>
+  <div class="container">
+    <div class="mood-box">
+      <div class="mood-title">Open when you are Feeling <br> Sad 😔</div>
+      <button class="btn" onclick="showMessage('sad')">Open</button>
+      <div class="message" id="sadMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">Open when you are Feeling <br> Happy 😄</div>
+      <button class="btn" onclick="showMessage('happy')">Open</button>
+      <div class="message" id="happyMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">Open when you are Feeling <br> Jealous 😒</div>
+      <button class="btn" onclick="showMessage('jealous')">Open</button>
+      <div class="message" id="jealousMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">Open when you are <br> Overthinking 🤯</div>
+      <button class="btn" onclick="showMessage('overthink')">Open</button>
+      <div class="message" id="overthinkMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">Open when you are Feeling <br> Stressed 😵‍💫</div>
+      <button class="btn" onclick="showMessage('stress')">Open</button>
+      <div class="message" id="stressMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">Open when you are Feeling <br> Insecure 💭</div>
+      <button class="btn" onclick="showMessage('insecure')">Open</button>
+      <div class="message" id="insecureMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Miss Me 😢</div>
+      <button class="btn" onclick="showMessage('miss')">Open</button>
+      <div class="message" id="missMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Want Care 🧸</div>
+      <button class="btn" onclick="showMessage('care')">Open</button>
+      <div class="message" id="careMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Want Comfort 🤍</div>
+      <button class="btn" onclick="showMessage('comfort')">Open</button>
+      <div class="message" id="comfortMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Need Motivation 🔥</div>
+      <button class="btn" onclick="showMessage('motivation')">Open</button>
+      <div class="message" id="motivationMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">🌧️ When It's Just a Bad Day</div>
+      <button class="btn" onclick="showMessage('badDay')">Open</button>
+      <div class="message" id="badDayMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Want to Feel Loved 🫶</div>
+      <button class="btn" onclick="showMessage('feelLoved')">Open</button>
+      <div class="message" id="feelLovedMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">🧠 When You Can’t Sleep</div>
+      <button class="btn" onclick="showMessage('cantSleep')">Open</button>
+      <div class="message" id="cantSleepMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">When You Wish I Was Around 🧍‍♀️</div>
+      <button class="btn" onclick="showMessage('missMe')">Open</button>
+      <div class="message" id="missMeMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">🐒 When You’re Bored</div>
+      <button class="btn" onclick="showMessage('bored')">Open</button>
+      <div class="message" id="boredMsg"></div>
+    </div>
+
+    <div class="mood-box">
+      <div class="mood-title">💭 Random Thought Box</div>
+      <button class="btn" onclick="showMessage('randomThoughts')">Open</button>
+      <div class="message" id="randomThoughtsMsg"></div>
+    </div>
+
+  </div>
+
+
+
+  <script>
+    const messages = {
+      sad: [
+        "It’s okay to not be okay. But you’ll always have me. 💙",
+        "You're allowed to cry. But never forget, you’re stronger than you think.",
+        "Let it all out... I’ll hold space for every tear. 🧸",
+        "No storm lasts forever — and you’re not alone in this one. ☁️",
+        "I wish I could hug you through the screen right now.",
+        "Dark days pass — besties don’t.",
+        "Feeling down? Let's burn this sadness together. 🔥",
+        "Your tears matter to me more than you know.",
+        "Close your eyes, pretend I’m beside you. Because I am.",
+        "You’re loved. Deeply. Unconditionally. Always."
+      ],
+      happy: [
+        "Your joy is my favorite thing to witness.",
+        "Smiles suit you. Keep wearing them! 😄",
+        "Let’s bottle this feeling and drink it on sad days 🍾",
+        "Who’s that radiant soul lighting up my world? Oh right — you! ✨",
+        "Happy you is my favorite version 🥹",
+        "Keep laughing, idiot. It heals me. 😂",
+        "Sunshine called. It said you’re stealing its job ☀️",
+        "Bookmark this feeling. It’s golden.",
+        "Happiness looks like you.",
+        "Let’s turn your joy into a festival 💃"
+      ],
+      jealous: [
+        "You're the only one I fight with and still adore 🌈",
+        "Nobody stands a chance. You’re irreplaceable.",
+        "Let them look. They’ll never be you.",
+        "Even when you're jealous, you're mine 😏",
+        "Nobody makes me feel the way you do.",
+        "You’ve got the exclusive bestie membership 🔒",
+        "You're my favorite problem, always.",
+        "You're not just special — you’re sacred.",
+        "Feeling jealous? I’d be too if I weren’t already you 😋",
+        "They could never match your chaos, charm, or cuteness."
+      ],
+      overthink: [
+        "Overthinking is exhausting — let me carry it for a while.",
+        "Breathe. You're not alone in this mind maze.",
+        "I’ve got snacks, tissues, and love — pick your weapon 🍫",
+        "Nothing bad will happen. I promise.",
+        "You’ve survived 100% of your worst days. This one's no different.",
+        "Just because your brain is loud doesn’t mean it’s right.",
+        "Let’s pause and scream into a pillow together 😤",
+        "Even your messy thoughts deserve kindness.",
+        "Let it go... even if just for tonight.",
+        "You're not broken — just beautifully human."
+      ],
+      stress: [
+        "Pause. Breathe. I’ve got you.",
+        "Let’s skip the stress and plan a getaway (real or imagined) 🏖️",
+        "You’re carrying too much. Drop it here, bestie 🧷",
+        "Stressed? Imagine me dancing like a goof. Feel better? 🕺",
+        "Let’s scream into the void together 🌌",
+        "You don’t need to be perfect. Just real.",
+        "You're doing better than you think, promise.",
+        "I believe in you — even on your worst day.",
+        "This too shall pass (with me beside you).",
+        "Squeeze your fists. Now release. I’m proud of you 💪"
+      ],
+      insecure: [
+        "Your insecurities don’t define you. But I’ll still love them too.",
+        "I see you — completely. And I still choose you.",
+        "You don’t have to be anything more. You already are enough.",
+        "You deserve softness, not standards.",
+        "In a world full of copies, you’re the original masterpiece 🎨",
+        "If confidence was a crown — you’d wear it without even trying.",
+        "You’re more than good enough. You’re *bestie* enough.",
+        "Your existence alone is worthy of celebration.",
+        "Don’t let a bad moment make you doubt a beautiful soul.",
+        "If you forget how amazing you are, I’ll remind you. Forever."
+      ],
+      miss: [
+        "I miss you too — more than I can ever write in words.",
+        "If missing you was a job, I’d be the CEO by now.",
+        "Close your eyes, hear me say your name, I’m right there.",
+        "You miss me? Check your heart. That’s where I always am.",
+        "You're never alone in missing — we're connected always.",
+        "Missing me? Smile. I’m probably thinking about you too.",
+        "If hugs could fly, you'd be wrapped in a hundred by now.",
+        "No distance ever reduces the chaos we built together.",
+        "I’m a text away. But my love is already in your pocket.",
+        "You don’t have to miss me. Just reread this, I’m here."
+      ],
+      care: [
+        "Wrap yourself in the softest blanket — now imagine it’s me.",
+        "Eat well, sleep tight. That’s how you care for both of us.",
+        "Take a break. Drink water. And imagine me squishing your cheeks.",
+        "Caring for yourself is also caring for me.",
+        "This message is a forehead kiss you didn’t know you needed.",
+        "Let my words be your hoodie — warm and oversized.",
+        "I'm your comfort playlist in human form.",
+        "Don't worry — this message came packed with care (and chocolate).",
+        "Even superheroes need naps. Rest now.",
+        "Caring is loving in soft, quiet moments. Like now."
+      ],
+      comfort: [
+        "You’re not alone — not in this life, not in this moment.",
+        "Imagine me beside you, not saying anything — just being there.",
+        "Let the silence hold you. Let love speak between the words.",
+        "Some wounds just need time. And a bestie’s love.",
+        "This hug may be virtual, but the warmth is very real.",
+        "Close your eyes and let yourself be held by peace.",
+        "I can’t fix everything — but I’ll never let you face it alone.",
+        "We’ve survived so much — this too shall pass.",
+        "You're wrapped in love even if you can’t see it.",
+        "Here’s your invisible comforter: made of memories + me."
+      ],
+      motivation: [
+        "You're made of stardust and stubbornness — shine and fight!",
+        "You’ve got this. And I’ve got you.",
+        "Every setback is a plot twist — your movie’s not over yet.",
+        "Get up. Straighten that crown. Go win the day.",
+        "Even on your worst days, you're still someone’s inspiration.",
+        "Breathe in belief. Exhale doubt.",
+        "Let’s pretend you can’t fail today. How would you live?",
+        "You were never meant to be average.",
+        "Small steps still count. Keep moving.",
+        "I believe in you — loudly, endlessly, stubbornly."
+      ],
+      badDay: [
+        "Bad days aren’t the end — they’re just pit stops. You’ll get back on track.",
+        "Close your eyes, breathe, and imagine my stupid dancing. Now smile.",
+        "The day may suck, but you don’t. Don’t confuse the two.",
+        "Even the worst days end. And I’ll be right here after them.",
+        "No judgment, no fixing — just me, staying with you.",
+        "If today broke you, let me be your glue.",
+        "You’ve had 100% success rate of surviving your worst days.",
+        "You’re allowed to restart today. As many times as needed.",
+        "If I could teleport, I’d already be beside you.",
+        "Tomorrow needs your magic. So rest up today."
+      ],
+      feelLoved: [
+        "You are loved — wildly, irrationally, deeply. By me.",
+        "You make my life better just by existing.",
+        "Even when you’re silent, I feel you. And I love you.",
+        "You’re not just liked — you’re cherished.",
+        "If love was visible, you’d be wrapped in a thousand arms right now.",
+        "You matter. To me. To the world. Don’t forget it.",
+        "You are so much more than you believe. You are everything.",
+        "I’d choose you in every version of every universe.",
+        "If I could, I’d mail you 1000 hugs today.",
+        "You are never alone — my heart’s got space reserved for you."
+      ],
+      cantSleep: [
+        "Close your eyes. I’m right here in the quiet.",
+        "The night is long, but my thoughts are hugging you till dawn.",
+        "Can’t sleep? Tell your brain to shut up — I’ll fight it for you.",
+        "Play our favorite memory in your head like a bedtime story.",
+        "Your thoughts are loud — but I’ll be louder with love.",
+        "Try counting all the ways I adore you. (You'll fall asleep by 35!)",
+        "No nightmares can reach you tonight. I’ve got guard duty.",
+        "Sleep is tricky, but you’re tougher. Drift slowly, I’m here.",
+        "Imagine I’m tucking you in with a forehead kiss. Now relax.",
+        "Even insomnia can’t outlast my care."
+      ],
+      missMe: [
+        "If you miss me, close your eyes. I’m already there.",
+        "Missing me? Good. I’m missing you too, idiot.",
+        "Our bond doesn’t need distance’s permission.",
+        "This space between us? Just temporary. Our love isn’t.",
+        "Wish I was there? Me too. Let’s meet in a memory.",
+        "Imagine me beside you, annoying you into laughter.",
+        "I left little pieces of myself in your heart — you’ll always find me there.",
+        "Distance can’t dim what we’ve got.",
+        "I’m closer than you think. Always.",
+        "This kit? It’s my hug for the days I can’t give it in person."
+      ],
+      bored: [
+        "Bored? Let’s imagine a world where we’re pirates. Or pancakes.",
+        "You’ve got a brain full of chaos. Use it for nonsense!",
+        "Message me something random. Like your toenail color.",
+        "Draw a mustache on a banana. Thank me later.",
+        "Boredom = a chance to create something stupidly cool.",
+        "Let’s play: Truth or Dare. (You go first.)",
+        "If I was there, we’d already be making a fort.",
+        "Spin in a circle till you fall. Send video.",
+        "Talk to me. Even if it’s just to say ‘I’m bored’.",
+        "You’re never boring. You’re just temporarily unstimulated."
+      ],
+      randomThoughts: [
+        "Do fish get thirsty? Just curious. 🐟",
+        "You ever wonder what color our friendship is? I think it’s chaos-glitter.",
+        "If hugs were currency, you’d be a billionaire.",
+        "Sometimes I think you’re an alien. The sweet kind.",
+        "I had a dream where you turned into a cupcake. I still miss that cupcake.",
+        "The universe did a happy dance the day you were born.",
+        "You once smiled at me and my brain went: rebooting…",
+        "You’ve got that kind of heart that makes people believe again.",
+        "I’d pick you — even if I had amnesia.",
+        "Isn’t it wild how you became my safe place?"
+      ]
+    };
+
+    function showMessage(type) {
+      document.querySelectorAll('.message').forEach(msg => {
+        msg.style.display = 'none';
+      });
+
+      const box = document.getElementById(`${type}Msg`);
+      const msg = messages[type][Math.floor(Math.random() * messages[type].length)];
+      box.innerText = msg;
+      box.style.display = 'block';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎁 Your Gifts</title>
+    <style>
+        :root {
+            --main-color: #b76e79;
+            --white: #ffffff;
+            --bg: linear-gradient(to right, #f3daf3, #ffffff 50%, #f3daf3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 1rem;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: var(--main-color);
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .gift-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gift-box {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-box img {
+            width: 150px;
+            height: 150px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .popup-content {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content h2 {
+            color: var(--main-color);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        #viewGiftBtn {
+            background-color: var(--main-color);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #viewGiftBtn:hover {
+            background-color: #a05562;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎁 Choose Your Gift</h1>
+    <div class="gift-container">
+        <div class="gift-box" data-link="gift1.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+        <div class="gift-box" data-link="gift2.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+        <div class="gift-box" data-link="gift3.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+    </div>
+    <br>
+    <div class="gift-container">
+        <div class="gift-box" data-link="gift4.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+        <div class="gift-box" data-link="gift5.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+        <div class="gift-box" data-link="gift6.html">
+            <img src="assets/gift-box.jpg" alt="Gift-box">
+        </div>
+    </div>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>You Unlocked This! ✨</h2>
+            <button id="viewGiftBtn">View Your Gift 🎉</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        const giftBoxes = document.querySelectorAll('.gift-box');
+        const popup = document.getElementById('popup');
+        const viewGiftBtn = document.getElementById('viewGiftBtn');
+        let currentLink = "";
+        let confettiInterval;
+
+        // Create canvas inside popup
+        const confettiCanvas = document.createElement("canvas");
+        confettiCanvas.style.position = "fixed";
+        confettiCanvas.style.top = "0";
+        confettiCanvas.style.left = "0";
+        confettiCanvas.style.width = "100%";
+        confettiCanvas.style.height = "100%";
+        confettiCanvas.style.pointerEvents = "none";
+        confettiCanvas.style.zIndex = "1000";
+        document.body.appendChild(confettiCanvas);
+        // popup.appendChild(confettiCanvas);
+
+        const myConfetti = confetti.create(confettiCanvas, {
+            resize: true,
+            useWorker: true
+        });
+
+        function launchConfettiLoop() {
+            confettiInterval = setInterval(() => {
+                myConfetti({
+                    particleCount: 25, // MORE CONFETTI 🎉
+                    spread: 90,
+                    startVelocity: 40,
+                    origin: {
+                        x: Math.random(),
+                        y: 0
+                    },
+                    colors: ['#bb0000', '#ffffff', '#b76e79', '#ffc107']
+                });
+            }, 100); // FASTER!
+        }
+
+        function stopConfettiLoop() {
+            clearInterval(confettiInterval);
+        }
+
+        giftBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                currentLink = box.getAttribute('data-link');
+                popup.style.display = "flex";
+                launchConfettiLoop();
+            });
+        });
+
+        viewGiftBtn.addEventListener('click', () => {
+            stopConfettiLoop();
+            if (currentLink) {
+                window.location.href = currentLink;
+            }
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = "none";
+                currentLink = "";
+                stopConfettiLoop();
+            }
+        });
+    </script>
+</body>
+</html>

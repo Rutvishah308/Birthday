@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎂 Birthday Surprise</title>
+    <style>
+        :root {
+            --background: linear-gradient(to right, #f3daf3, #ffffff 50%, #f3daf3);
+            --main-color: #b76e79;
+            --border: 1px solid #2c2727;
+            --light-bg: #eeeeee;
+            --white: #fff;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: var(--background);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Ensure vertical centering */
+            padding: 0 1rem;
+            /* Add small side padding for tiny screens */
+            box-sizing: border-box;
+        }
+
+        .container {
+            border: var(--border);
+            border-radius: 2rem;
+            background-color: var(--white);
+            font-size: 1.5rem;
+            width: 100%;
+            max-width: 700px;
+            padding: 2rem;
+            font-weight: bold;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            box-sizing: border-box;
+        }
+
+
+        .container h1 {
+            width: 100%;
+            text-align: center;
+            color: var(--main-color);
+            padding: 0.5rem;
+        }
+
+        .container #nameForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container #nameForm input {
+            text-align: center;
+            border: var(--border);
+            width: 40%;
+            border-radius: 2rem;
+            padding: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .container #nameForm input:hover {
+            width: 41%;
+            font-size: 1.4rem;
+        }
+
+        .container #nameForm button {
+            border: var(--border);
+            width: 40%;
+            border-radius: 10rem;
+            padding: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .container #nameForm button:hover {
+            background-color: var(--main-color);
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        @media (max-width: 800px) {
+            .container #nameForm input{
+                width: 60%;
+            }
+            .container #nameForm button{
+                width: 60%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Happiestt Birthdayyy Cutieee! 🐣🎂</h1>
+        <!-- Name Input Form -->
+        <form id="nameForm">
+            <input type="text" id="nameInput" placeholder="Enter your name..." required />
+            <button type="submit">Let's Start</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("nameForm");
+            const nameInput = document.getElementById("nameInput");
+
+            function launchConfetti(duration = 5000) {
+                const end = Date.now() + duration;
+                (function frame() {
+                    confetti({
+                        particleCount: 10,
+                        angle: 60,
+                        spread: 70,
+                        origin: { x: 0 },
+                    });
+                    confetti({
+                        particleCount: 10,
+                        angle: 120,
+                        spread: 70,
+                        origin: { x: 1 },
+                    });
+                    if (Date.now() < end) {
+                        requestAnimationFrame(frame);
+                    }
+                })();
+            }
+
+            if (form && nameInput) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    const name = nameInput.value.trim();
+
+                    if (name !== "") {
+                        localStorage.setItem("userName", name); // ✅ Save name
+                        form.style.display = "none";
+                        launchConfetti();
+                        setTimeout(() => {
+                            window.location.href = "test.html";
+                        }, 5000);
+                    }
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>

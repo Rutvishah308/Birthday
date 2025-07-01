@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Friendship Test📋🤝</title>
+	<style>
+		:root {
+			--background: linear-gradient(to right, #f3daf3, #ffffff 50%, #f3daf3);
+			--main-color: #b76e79;
+			--border: 1px solid #2c2727;
+			--light-bg: #eeeeee;
+			--white: #fff;
+		}
+
+		* {
+			padding: 0;
+			margin: 0;
+		}
+
+		body {
+			background: var(--background);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			/* Ensure vertical centering */
+			padding: 0 1rem;
+			/* Add small side padding for tiny screens */
+			box-sizing: border-box;
+		}
+
+		.container {
+			border: var(--border);
+			border-radius: 2rem;
+			background-color: var(--white);
+			font-size: 1.5rem;
+			width: 100%;
+			max-width: 700px;
+			padding: 2rem;
+			font-weight: bold;
+			word-wrap: break-word;
+			overflow-wrap: break-word;
+			box-sizing: border-box;
+		}
+
+
+		.container h1 {
+			width: 100%;
+			text-align: center;
+			color: var(--main-color);
+			padding: 0.5rem;
+		}
+
+		#question {
+			font-size: 2rem;
+			line-height: 1.6;
+			margin-bottom: 1.5rem;
+			text-align: center;
+			word-wrap: break-word;
+		}
+
+		.optionBtn {
+			display: block;
+			margin: 1rem auto;
+			padding: 1rem 2rem;
+			font-size: 1.1rem;
+			border-radius: 2rem;
+			border: none;
+			background-color: var(--light-bg);
+			cursor: pointer;
+			transition: 0.3s;
+			width: auto;
+			min-width: 30%;
+		}
+
+		.optionBtn:hover {
+			background-color: var(--main-color);
+			font-size: 1.2rem;
+			color: var(--white);
+			font-weight: bold;
+		}
+
+		#nextBtn {
+			background-color: rgb(177, 63, 243);
+			color: white;
+			padding: 0.8rem 2rem;
+			border-radius: 1.4rem;
+			border: none;
+			font-size: 1.3rem;
+			cursor: pointer;
+			margin: 1rem auto;
+			width: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container" id="quizContainer">
+		<h1 id="question">Loading...</h1>
+		<div id="options"></div>
+		<button id="nextBtn" style="display:none;">Next Question</button>
+		<div id="result" style="display:none; text-align:center; margin-top:2rem;">
+			<h2 id="finalMessage"></h2>
+			<button onclick="location.href='choice.html'">Let's Go 💖</button>
+		</div>
+	</div>
+
+	<script>
+		function shuffleArray(array) {
+			return array.sort(() => Math.random() - 0.5);
+		}
+
+		const fullQuizData = [
+			{
+				question: "If I push you away, what should you really do?",
+				options: ["Pull me in and remind me I’m loved", "Give me space but never too far", "Leave like everyone else did", "Stay right there and fight my overthinking"],
+				answer: "Give me space but never too far"
+			},
+			{
+				question: "What do I hate the most?",
+				options: ["Interruption when I’m talking 🙄", "Someone breathing near me while I’m annoyed 😤", "Not getting the last bite of my food 🍟", "You existing peacefully after pissing me off 💥"],
+				answer: "Interruption when I’m talking 🙄"
+			},
+			{
+				question: " If I say “block kar dungi,” what will I do?",
+				options: ["Say it 10 times, never do it, but still stay mad 😒", "Block, unblock, block again… drama loop ♻️", "Actually block you and disappear like a queen 🕶️", "Send a reel, delete it, and then ignore you for 3 hours 📵"],
+				answer: "Actually block you and disappear like a queen 🕶️"
+			},
+			{
+				question: "If someone asked, “Who is she(me) to you?”, what would you say?",
+				options: ["Just a close friend", "The best part of my life", "My emotional support villain 😈", "Let’s not label magic 💖"],
+				answer: "The best part of my life"
+			},
+			{
+				question: "What would I do if you posted a picture with another girl?",
+				options: ["Like it, act chill, but block you later💥", "Slide up with “Wow :)” and ruin your peace", "DM the girl He’s mine🙄", "Post Another Story with my other MALE friends 😘"],
+				answer: "Post Another Story with my other MALE friends 😘"
+			},
+			{
+				question: "When's my birthday month?",
+				options: ["January", "February", "June", "August"],
+				answer: "August"
+			},
+			{
+				question: "What do I always say when I’m pretending to be okay?",
+				options: ["I'm fine", "I don’t care", "Used to it now", "Whatever"],
+				answer: "I don’t care"
+			},
+			{
+				question: "What’s the one emoji I use all the time?",
+				options: ["😭", "😒", "💀", "❤️"],
+				answer: "😒"
+			},
+			{
+				question: "What do I do when I’m upset but don’t want to say it?",
+				options: ["Go offline", "Start roasting", "Act extra normal", "Overthink silently"],
+				answer: "Act extra normal"
+			},
+			{
+				question: "If I say 'I’m sleeping', what am I actually doing?",
+				options: ["Actually sleeping", "Crying", "Watching reels", "Staring at the ceiling"],
+				answer: "Watching reels"
+			},
+			{
+				question: "What’s our toxic trait?",
+				options: ["Saying we’ll sleep early but don't", "Ghosting everyone together", "Oversharing everything", "Laughing at pain"],
+				answer: "Saying we’ll sleep early but don't"
+			},
+			{
+				question: "What would I order without thinking twice?",
+				options: ["Momos", "Biryani", "Ice cream", "Maggi"],
+				answer: "Maggi"
+			},
+			{
+				question: "What’s the best way to cheer me up?",
+				options: ["Food + memes + shut up💅", "Hug, then insult me playfully😇", "Sit silently until I talk🔪", "Take me on a ride without asking anything 💫"],
+				answer: "Sit silently until I talk🔪"
+			},
+			{
+				question: "If we fight badly, what’s the best apology from you?",
+				options: ["I was wrong. Always. Forever.😌", "Sending a reel saying : ye sab meri galti thi😇", "Show up with my fav snack and sad puppy face 🐶", "Threaten to expose my secrets, then hug me anyway 😌"],
+				answer: "I was wrong. Always. Forever.😌"
+			},
+			{
+				question: "What’s the most dangerous thing about being my bestie?",
+				options: ["My tantrums every 4 minutes 💣", " The roasting I do in public 💅", "The fact that I know too much 🧠", "My unpredictability 🎭"],
+				answer: "My tantrums every 4 minutes 💣"
+			},
+			{
+				question: "How would I confess something serious?",
+				options: ["I’d type a long message", "Call late night", "Just send a meme", "Wouldn’t confess"],
+				answer: "I’d type a long message"
+			},
+			{
+				question: "What’s my real reaction to being ignored?",
+				options: ["I ignore too", "I cry", "I spam you", "I delete chat"],
+				answer: "I spam you"
+			},
+			{
+				question: "If you get one wish, what would you ask for? (Choose wisely 👀)",
+				options: ["Unlimited Food🍛", "A refund for your friendship subscription 🧾❌", "My mood swings to vanish 😇", "A mute button for me 🧏‍♀️"],
+				answer: "My mood swings to vanish 😇"
+			},
+			{
+				question: "If we ever got into a real fight, what would be the reason?",
+				options: ["You forgot something important (AGAIN) 🤬", "You sided with someone else 😤", "You didn’t understand my silence 😶", "You did something I clearly, absolutely DO NOT like 😒🔪"],
+				answer: "You did something I clearly, absolutely DO NOT like 😒🔪"
+			},
+			{
+				question: "What’s the most 'me' thing to do when I'm upset?",
+				options: ["Vanish and expect you to know why 💅", "Post sad Instagram stories with no context 😭", "tart acting normal but lowkey dramatic 👀", "Send “hmm” or “ok” and ghost you ✨"],
+				answer: "Send “hmm” or “ok” and ghost you ✨"
+			},
+			{
+				question: "How would I react if someone flirts with you in front of me?",
+				options: ["Silently listen and laugh... until she walks away — then you're DEAD 💀🔪🙂", "Give her a fake smile and instantly start pulling you away 😏", "Interrupt with: Excuse me, he’s taken — by me. As a bestie. Relax. 😌💁‍♀️", "Watch the scene unfold and roast you both later in the group chat 📲🔥"],
+				answer: "Silently listen and laugh... until she walks away — then you're DEAD 💀🔪🙂"
+			},
+			{
+				question: "What would I do if you ignored my paragraph text and replied with just 'hmm'?",
+				options: ["Leave you on read for a week 🔥", "Send 18 follow-ups with attitude 🫠", "Block you emotionally and spiritually 🧘‍♀️", "Reply with: ‘Thanks. Never texting again. Bye.’ 😤"],
+				answer: "Reply with: ‘Thanks. Never texting again. Bye.’ 😤"
+			},
+			{
+				question: "What’s one thing you should NEVER do when I’m angry?",
+				options: ["Tell me to 'calm down' 💀", "Try to make jokes 😒", "Say 'it's not that deep' 🙄", "All of the above if you want to live 😇"],
+				answer: "All of this if you want to live 😇"
+			},
+			{
+				question: "If I’m sending memes but not replying properly, what’s going on?",
+				options: ["I’m lowkey upset but trying to stay connected 😶‍🌫️", "I’m hungry and emotionally unavailable 🍟", "I need attention but won’t say it 🧸", "All of the above, obviously 🤷‍♀️"],
+				answer: "All of this, obviously 🤷‍♀️"
+			},
+			{
+				question: "If I ever say 'do whatever you want'... what does it actually mean?",
+				options: ["You’re already in trouble 😐", "You're being tested, choose wisely 🧠", "I'm lowkey crying while saying that 🥺", "You are free to do anything😈"],
+				answer: "You're being tested, choose wisely 🧠"
+			},
+			{
+				question: "What’s something I do that screams ‘I love you’ but I’ll never admit it?",
+				options: ["Roast you daily with precision 🧂", "Check your last seen like a stalker 👀", "Get mad over tiny things & forgive instantly", "Send you songs and say ‘this just hits’ 🎶"],
+				answer: "Check your last seen like a stalker 👀"
+			},
+			{
+				question: "What does my 'typing...' pause mean during fights?",
+				options: ["I’m rewriting 5 times to not sound crazy 💻", "I’m deleting emotional damage lines 🧨", "I’m waiting for YOU to say sorry 😒", "I’m calculating if this friendship still deserves effort 🧮"],
+				answer: "I’m deleting emotional damage lines 🧨"
+			},
+			{
+				question: "What do I lowkey expect from you even when I say 'I don’t need anyone'?",
+				options: ["To still stay and understand 🧸", "To show up when no one else does 🫂", "To argue with me even when I’m wrong 😭", "To just sit silently beside me until I speak 🧘‍♀️"],
+				answer: "To just sit silently beside me until I speak 🧘‍♀️"
+			},
+			{
+				question: "What’s the one thing that makes me forgive you even if I’m mad as hell?",
+				options: ["You remembering something tiny I once said 🧠", "You calling me by my weird nickname 🐒", "You showing up with food silently 🍕", "You looking at me like I matter without saying a word 🥺"],
+				answer: "You looking at me like I matter without saying a word 🥺"
+			}
+		];
+
+		const quizData = shuffleArray(fullQuizData).slice(0, 10);
+
+		let currentQuestion = 0;
+		let score = 0;
+
+		const questionEl = document.getElementById("question");
+		const optionsEl = document.getElementById("options");
+		const nextBtn = document.getElementById("nextBtn");
+		const quizContainer = document.getElementById("quizContainer");
+
+		function loadQuestion() {
+			const q = quizData[currentQuestion];
+			questionEl.textContent = q.question;
+			optionsEl.innerHTML = "";
+			nextBtn.style.display = "none";
+
+			const shuffledOptions = shuffleArray([...q.options]);
+			shuffledOptions.forEach(option => {
+				const btn = document.createElement("button");
+				btn.textContent = option;
+				btn.className = "optionBtn";
+				btn.onclick = () => selectOption(btn, q.answer);
+				optionsEl.appendChild(btn);
+			});
+		}
+
+		function selectOption(btn, correctAnswer) {
+			document.querySelectorAll(".optionBtn").forEach(b => {
+				b.disabled = true;
+				if (b.textContent === correctAnswer) {
+					b.style.backgroundColor = "#0b1957";
+					b.style.color = "#fff";
+				}
+			});
+
+			if (btn.textContent === correctAnswer) {
+				score++;
+				btn.style.backgroundColor = "#0b1957";
+				btn.style.color = "#fff";
+			} else {
+				btn.style.backgroundColor = "#ffdbd1";
+				btn.style.color = "#000";
+				alert("Wrong Answer Dude! 🥺");
+			}
+
+			nextBtn.style.display = "block";
+		}
+
+		function showResult() {
+			quizContainer.innerHTML = `
+	<div style="text-align: center; padding: 2rem;">
+		<h2 style="color: #b76e79; font-size: 2rem; margin-bottom: 2rem;">
+			${score >= 8 ? "You passed the friendship test! 💖" : "Oops! Try again..Emotional Damage! 😭"}
+		</h2>
+		${score >= 8 ? `
+			<button style="
+				background-color: #b76e79;
+				color: white;
+				padding: 1rem 2rem;
+				font-size: 1.2rem;
+				border: none;
+				border-radius: 2rem;
+				cursor: pointer;
+				transition: 0.3s;
+			" onclick="location.href='choice.html'">Let's Go 😘</button>` : ""}
+	</div>`;
+		}
+
+		if (quizContainer && questionEl && optionsEl && nextBtn) {
+			loadQuestion();
+			nextBtn.onclick = () => {
+				currentQuestion++;
+				if (currentQuestion < quizData.length) {
+					loadQuestion();
+				} else {
+					showResult();
+				}
+			};
+		}
+
+	</script>
+</body>
+
+</html>

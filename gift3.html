@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock The Bestie 🔓💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: linear-gradient(to right, #f3daf3, #ffffff 50%, #f3daf3);
+            --main-color: #b76e79;
+            --border: 1px solid #2c2727;
+            --light-bg: #eeeeee;
+            --white: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background: var(--background);
+            color: #333;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--main-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .drawer {
+            border: 2px dashed var(--main-color);
+            background-color: #fff0f5;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .drawer:hover {
+            background-color: #ffe4ec;
+        }
+
+        .content {
+            display: none;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        #mischief h6{
+            margin-bottom: 1px;
+        }
+        .question {
+            margin-bottom: 0.8rem;
+            font-weight: bold;
+        }
+
+        .option {
+            margin: 0.3rem 0;
+            background: var(--white);
+            border: 1px solid #ccc;
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .option:hover {
+            background-color: #f9f9f9;
+        }
+
+        .option.correct {
+            background: #c0f7c0;
+            border-color: #2f855a;
+        }
+
+        .option.wrong {
+            background: #ffc2c2;
+            border-color: #e53e3e;
+        }
+
+        #finalMessage {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #fdf0f2;
+            border-left: 6px solid #934f5a;
+            border-radius: 10px;
+            display: none;
+            font-size: 1.4rem;
+        }
+
+        #finalMessage h3 {
+            text-align: center;
+        }
+
+        input[type="text"] {
+            padding: 0.5rem;
+            margin-top: 1rem;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            width: 80%;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 0.7rem;
+            padding: 0.5rem 1rem;
+            background-color: var(--main-color);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #934f5a;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .drawer {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔓 Unlock The Bestie</h1>
+
+    <!-- Drawer 1 -->
+    <div class="drawer" onclick="toggleContent('mischief')">
+        🔹 Drawer 1: Mischief 🌀
+        <div class="content" id="mischief">
+            <p class="question">You Just Made A Wrong Move In Bestie Hood What Happens Next?</p>
+            <div class="option" onclick="checkAnswer(this, true)">You Get Blocked In Real Life💣</div>
+            <div class="option" onclick="checkAnswer(this, false)">Bestie Explodes Into Sarcasm😤</div>
+            <div class="option" onclick="checkAnswer(this, false)">You Must Buy Her Chocolate As Apology🍫</div>
+            <H6>Hint : Choose My Reaction.. One Wrong Answer And You Are Dead☠️</h6>
+        </div>
+    </div>
+
+    <!-- Drawer 2 -->
+    <div class="drawer" onclick="toggleContent('memories')">
+        🔹 Drawer 2: Memories 📸
+        <div class="content" id="memories">
+            <p><em>"You Stayed When I Was Crying. You Believed In Me. You Made Me Feel Enough."</em></p>
+        </div>
+    </div>
+
+    <!-- Drawer 3 -->
+    <div class="drawer" onclick="toggleContent('magic')">
+        🔹 Drawer 3: Magic 💖
+        <div class="content" id="magic">
+            <p class="question">Enter The 4-Digit Code (Hint: Birthdays!)</p>
+            <input type="text" id="codeInput" placeholder="( Hint : DMDM )" maxlength="4">
+            <button onclick="checkCode()">Unlock</button>
+        </div>
+    </div>
+
+    <!-- Final Message -->
+    <div id="finalMessage">
+        <h3>💖 Bestie Ticket Unlocked💖</h3>
+        <P>The Real Treasure Wasn’t The Clues... It Was <b> YOU </b> All Along.
+            Hey You,<BR>
+            Yes you — my loudest supporter, my favorite interruption, my unexpected peace.<BR>
+            You make my world better just by being in it.<BR>
+            Thank you for letting me be me — all messy, moody, magical parts of me.<BR>
+            I don’t say it often... but I notice everything you do.<BR>
+            Every small effort. Every silent patience. Every soft smile.<BR>
+            You are not ordinary.<BR>
+            You’re a once-in-a-lifetime kind of bestie.<BR>
+            And I’m so so lucky the universe chose you for me. 💫<BR>
+            — Your Forever Chaos With Love 💙<br>
+            You’re Not Just My Sirdard — You’re My Safe Place, My Smile Trigger, My Forever Bestie 💙</P>
+        <h3>🎉You’ve Officially Won... 🎉<br><br>
+            🥇 A Lifetime Membership To Being My Favorite Human! 🥇</h3>
+        <p>Includes:<br>
+            💙 2 Giant Bear Hugs (Redeemable Anytime)<br>
+            🎭 Unlimited Mischief Sessions (No Expiry)<br>
+            🌪 1,000+ Mood Swings – All Yours To Handle 😜<br>
+            🎀 And a forever-pass to my weirdness, rants, late-night overthinking, and endless love.<br><br>
+            T & C Apply: You can’t return this friendship Ever. 😘
+        </p>
+    </div>
+
+    <!-- JS -->
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const isVisible = content.style.display === 'block';
+
+            // Close all
+            document.querySelectorAll('.content').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            // Show only if it was hidden
+            if (!isVisible) {
+                content.style.display = 'block';
+                if (id === "magic") {
+                    setTimeout(() => {
+                        document.getElementById("codeInput").focus();
+                    }, 100);
+                }
+            }
+        }
+
+        function checkAnswer(option, isCorrect) {
+            if (option.classList.contains("correct") || option.classList.contains("wrong")) return;
+
+            if (isCorrect) {
+                option.classList.add("correct");
+                alert("Correct Answer 😎");
+            } else {
+                option.classList.add("wrong");
+                alert("Oops! Try Again 😬");
+            }
+        }
+
+        function checkCode() {
+            const input = document.getElementById("codeInput").value.trim();
+            if (input === "3738") {
+                document.getElementById("finalMessage").style.display = 'block';
+                alert("You’ve Unlocked The Bestie Vault 💙");
+            } else {
+                alert("Wrong Code! It’s Our Birthdays! 🎂");
+            }
+        }
+
+        // Prevent drawers from closing when interacting inside content
+        document.querySelectorAll('.content').forEach(content => {
+            content.addEventListener('click', e => e.stopPropagation());
+        });
+    </script>
+</body>
+
+</html>

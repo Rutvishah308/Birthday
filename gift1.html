@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Official Bestie Certification💖✅</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap');
+
+        body {
+            background: #f3e8f3;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            margin: 0;
+            text-transform: capitalize;
+        }
+
+        .certificate {
+            background: #fff;
+            border: 12px double #b76e79;
+            padding: 1rem;
+            max-width: 700px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .certificate h1 {
+            color: #b76e79;
+            font-size: 2.7rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate h2 {
+            font-size: 1.6rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #fd0000;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.4rem;
+        }
+
+        .stamp {
+            font-size: 1.4rem;
+            color: #ff0022;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer {
+            font-size: 0.95rem;
+            color: #8a8888;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="certificate">
+        <h1>Official Bestie Certification💖✅</h1>
+        <h2>Presented To</h2>
+        <div class="name" id="userName">[Your Name]</div>
+        <div class="message">
+            For Being The Kind Of Soul Who Listens Without Judgment,<br />
+            Laughs Through The Pain, And Shines Even On The Darkest Days.<br />
+            Your Strength, Empathy, And Resilience Inspire Everyone Around You.<br />
+            This Certificate Is A Gentle Reminder That<br />
+            <strong>You Matter, You’re Cherished, And You’re Deeply Loved.</strong>
+        </div>
+
+        <div class="stamp">❤️ Certified Bestie ❤️</div>
+        <div class="footer">💌 Issued with infinite love & hugs From Rutvi💌</div>
+    </div>
+
+    <script>
+        const userName = localStorage.getItem("userName") || "Lovely Human";
+        document.getElementById("userName").textContent = userName;
+    </script>
+</body>
+
+</html>
